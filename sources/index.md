@@ -1,0 +1,48 @@
+# sources/ ナレッジベース索引
+
+ガバナンス文書作成の根拠となる一次資料と、その構造化要約を蓄積する。
+各エントリは「要約Markdown + 原典(PDF等)」をペアで保管し、出典・該当箇所つきで引用できるようにする。
+
+| 種別 | ファイル | 概要 |
+|---|---|---|
+| 社内資料 | [AIタスクフォース体制設計・草案](2026-04-30_ai-taskforce-charter-and-org-design_draft.md) | TF立ち上げ・体制・分科会・スケジュール。チームの公式スコープと最初のマイルストーンを規定 |
+| 民間提言 | [AIGA 攻めのAIガバナンス戦略レポート v1.0](2025-11-28_aiga_offensive-ai-governance-strategy-report_v1.0.md) | 経営層向け意思決定フレームワーク(Step0-4)とAI-RA-ROICモデル。「攻めのガバナンス」「自社AI棚卸し」「内部統制義務」 |
+| 政府GL(概要) | [AI事業者ガイドライン 第1.2版 概要](2026-03-31_meti-soumu_ai-business-guideline_v1.2_overview.md) | 国内の上位参照規範。10の共通指針、開発者/提供者/利用者の3主体別事項、第2部E「AIガバナンスの構築」。起点3点を条項にマッピング済み |
+| 政府GL(本編) | [AI事業者ガイドライン 第1.2版 本編](2026-03-31_meti-soumu_ai-business-guideline_v1.2_main.md) | 用語定義(AIエージェント/フィジカルAI/AIガバナンス)、第2部Eのガバナンス構築サイクル①〜⑤、監査ログ・アカウンタビリティの具体条項、広島行動規範12指針全文。利用指針の手順書の土台 |
+| 政府GL(別添概要) | [AI事業者ガイドライン 第1.2版 別添 概要](2026-03-31_meti-soumu_ai-business-guideline_v1.2_attachment-overview.md) | 実践(how)の道具箱。別添2A=ガバナンス行動目標(利用指針の目次)、別添7=チェックリスト/ワークシート(外販アセスメントの原型)、別添1B=リスク分類体系。カスタマイズ前提が公式明記 |
+| 政府GL(別添本体) | [AI事業者ガイドライン 第1.2版 別添 本体](2026-03-31_meti-soumu_ai-business-guideline_v1.2_attachment-main.md) | 別添2A行動目標1-1〜6-1の全文+実践例を精読。利用指針(AIポリシー)の完成された型。事故対応(3-4-2)・監査ログ(4-2)・内部監査評価(5-1)・改訂ループ(6-1)の具体手順。「既存ポリシー基盤型」がe-Agencyに最適 |
+| 政府GL(別添7チェックリスト) | [AI事業者ガイドライン 第1.2版 別添7 チェックリスト](2026-03-31_meti-soumu_ai-business-guideline_v1.2_checklist.md) | 7A=共通指針9問/7B=広島指針12問の逐語。社内セルフチェック・外販アセスメントの設問に即転用可 |
+| 政府GL(別添7Cワークシート) | [AI事業者ガイドライン 第1.2版 別添7C ワークシート](2026-03-31_meti-soumu_ai-business-guideline_v1.2_worksheet.md) | Excel実物(6シート・記載例入り)。列設計=分類/設問/対応箇所/検討対象か(除外理由)/連携/具体的アプローチ/見直し日+役割欄α/β/γ。外販アセスメント・社内利用指針の実装テンプレ。原典xlsxも保管=即編集可 |
+| 国際(G7) | [G7 中小企業AI導入ツールキット(+広島AIプロセス国際指針12項目)](2025-07-24_g7-canada_sme-ai-adoption-toolkit_with-haip-principles.md) | G7 2025カナダ議長国作成。中小企業の3障壁(組織認知/リスク特定/技術知見)別の参照リソースカタログ=外販提案の課題セグメント+標準マップに転用可。付属書に広島AIプロセス国際指針12指針の逐語(別添7Bの原文根拠)。AI事業者GLが国際参照されている |
+| 国際(G7・原典) | [広島AIプロセス国際指針(2023, 仮訳)](2023-10-30_g7_hiroshima-ai-process_guiding-principles_ja.md) | 11項目の原則(見出し+短い解説)の原典。対象は「開発\*\*・利用**する組織」=利用者のe-Agencyも名宛人→外販/社内で「指針準拠」と言うのが射程的に正確。三層(指針→規範→別添7B)の最上位 |
+| 国際(G7・原典) | [広島AIプロセス国際行動規範(2023, 仮訳)](2023-10-30_g7_hiroshima-ai-process_international-code-of-conduct_ja.md) | 上記指針の詳細版(開発組織向け)。行動1〜11の具体(レッドチーミング・CBRN等リスク類型・モデル重み保護・透明性報告書・コンテンツ来歴等)。e-Agencyは3立場(利用者=ベンダー評価/提供者=外販根拠/開発者=自社エージェント規範)で使い分け |
+| 政府GL(技術・本体) | [総務省 AIセキュリティ技術的対策GL 本体](2026-03_soumu_ai-security-technical-measures-guideline_main.md) | 位置づけ・脅威分類・対策総論・想定事例。★(1)セキュリティ確保の定義=起点①、(2)**「営業秘密」保護の法的フック\*\*(対策→不正競争防止法の秘密管理性充足)、(3)**監査ログのトレーサビリティ**=起点②根拠、(4)**想定事例1=社内RAGチャットボット=自社Gemini展開の脅威モデル雛形**、(5)**AIエージェントは対象外**(OWASP Agentic AIで補完要) |
+| 政府GL(技術・別添) | [総務省 AIセキュリティ技術的対策GL 別添(付属資料)](2026-03_soumu_ai-security-technical-measures-guideline_attachment.md) | ★起点①②の技術根拠/S4実装の設計図。システムプロンプト強化・機密情報分離(KMS)・入出力検証(ブロックリスト/ガードレールLLM)・外部参照データ分離・**RAGアクセス制御(タグ付け/マルチテナント/最小権限)**・オーケストレータ権限管理を図解。VLMへのCNN攻撃転用も。本体は上記 |
+| 政府GL(技術・パブコメ) | [総務省 AIセキュリティGL パブコメ結果](2026-03_soumu_ai-security-technical-measures-guideline_public-comments.md) | 意見87項目+総務省回答。業界が見る不足・争点のメタ情報。★**AIエージェント対象外への大手の異論**(OWASP Agentic AI系を参照=取得優先の裏付け)、ISO/IEC 27090/27091、**「営業秘密」論点の補正**(対策=要件充足を基礎づける一要素)、監査ログのプライバシー均衡、データポイズニングvsクリエイター自衛(Glaze等)の線引き |
+| 政府(法解釈) | [文化庁 AIと著作権に関する考え方について](2024-03-15_bunkacho_ai-and-copyright-approach.md) | ★起点③の本命。2段階(開発・学習=法30条の4/生成・利用=類似性+依拠性)で侵害判定。**依拠性の3類型**(①既存著作物入力→侵害/②学習データ混在→推認/③無関係→不成立)、**事業者の規範的行為主体責任**(抑止措置で軽減)、**生成物の著作物性**(創作的寄与で判断)。RAGは軽微利用超で許諾要=起点①と交差 |
+| 政府(法解釈・概要) | [文化庁 AIと著作権「考え方」【概要】スライド版](2024-04_bunkacho_ai-and-copyright-approach_overview.md) | 上記本体の公式スライド要約(令和6年4月)。内容は本体に集約。**社内研修・ブログ・外販提案にそのまま使える図版**(2段階/享受の例/依拠性の場合分け/責任主体の対比)として保管 |
+| 民間(ベンダーWP) | [Palo Alto/Idira: Securing Agentic AI(アイデンティティ基盤)](2026-04_paloalto-idira_securing-agentic-ai-identity-foundation.md) | ★総務省GLが対象外としたAIエージェント特有リスクを埋める。**新リスク5類型**(権限昇格/無記録データ持出/なりすまし/連鎖脆弱性/汚染伝播)、**統制4領域**(レジストリ+JIT/監視/キルスイッチ/ソース検証)、ガバナンス3類型。マルチAgentは封じ込め不能=単一境界維持が妥当。⚠ベンダー資料→OWASP/NISTで裏取り要(→OWASP ASIで完了) |
+| 中立標準(OWASP) | [OWASP Top 10 for Agentic Applications 2026(ASI01-10)](2025-12_owasp_top10-for-agentic-applications-2026.md) | ★**エージェント特有リスクの中立標準裏取り**。ASI01目標ハイジャック〜ASI10ローグまで10類型+各対策。**Least-Agency(最小エージェンシー)**原則、observability非交渉。付録A=ASI↔LLM Top10↔脅威T1-17↔AIVSSマッピング行列(外販アセスメントの核)、付録D=実インシデント表(**Gemini Trifecta**等)。CC BY-SA 4.0=翻案可。Palo Alto5類型をASIで再構成、総務省GLの空白を充足 |
+| 中立標準(OWASP) | [OWASP Agentic AI – Threats and Mitigations v1.1(T1-T17)](2025-12_owasp_agentic-ai-threats-and-mitigations_v1.1.md) | ★ASI(上位10)の**下位詳細タクソノミ(T1-T17)+6対策プレイブック**。**意思決定ツリー6ステップ**(自律手順/記憶/ツール/認証/人間/マルチ)でユースケース別にリスク選定可=別添7Cの検討対象選定に直結。各プレイブックはProactive/Reactive/Detectiveの3層=対策カタログに転用。T8否認・追跡不能=起点②の独立根拠。「プロンプト/メモリもコード同様にバージョン管理」=内部統制と好相性。CC BY-SA 4.0 |
+
+## 今後ナレッジ化予定(外部ドキュメント)
+
+- [x] 総務省「**AIのセキュリティ確保のための技術的対策に係るガイドライン**」(2026/3, LLM対象)← 起点①②の技術根拠。**本体+別添ともに取得済**
+- [△] AIエージェント特有リスク ← Palo Alto/IdiraのベンダーWPで一次的に把握済([要約](2026-04_paloalto-idira_securing-agentic-ai-identity-foundation.md))。**中立標準での裏取りは OWASP ASI で完了**:
+  - [x] **OWASP Top 10 for Agentic Applications 2026(ASI01-10)** ← 取得済([要約](2025-12_owasp_top10-for-agentic-applications-2026.md))。中立標準でPalo Alto5類型を裏取り完了
+  - [x] **OWASP「Agentic AI – Threats and Mitigations v1.1(T1-T17)」** ← 取得済([要約](2025-12_owasp_agentic-ai-threats-and-mitigations_v1.1.md))。ASIの下位詳細タクソノミ+6プレイブック。意思決定ツリーでユースケース別選定
+  - [ ] **「Securing Agentic Applications Guide 1.0」/ AIVSS(定量スコア)/ NHI Top 10** ← ASI/T&Mが参照。次の取得候補(エージェント領域はASI+T&Mで主要部分は充足済)
+  - [ ] **NIST SP 800-53 AI control overlays**(Palo Alto WPが参照)
+- [ ] **ISO/IEC 27090 / 27091**(AIセキュリティ/プライバシー国際規格)← パブコメでCiscoが整合を要求。ISO 42001(マネジメント)と対をなす
+- [ ] MITRE ATLAS / NIST AI RMF(パブコメで多数が参照)
+- [x] 文化庁「**AIと著作権に関する考え方について**」(令和6年3月)← 起点③の根拠。**取得済**。後続の「**著作権者・利用者向けチェックリスト&ガイダンス**」(別冊・実務版)は未取得
+- NIST AI RMF(Govern/Map/Measure/Manage)
+- ISO/IEC 42001(AIマネジメントシステム)← G7ツールキットでも中核リソース。優先度↑
+- OECD AIシステム分類フレームワーク / CAN/DGSI 101:2025(SME向け) ← G7ツールキット経由で把握
+- Google SAIF(Secure AI Framework)
+- OWASP LLM Top 10 / MITRE ATLAS
+
+## 法改正・動向ウォッチ(改訂ループS4の監視対象)
+
+- AI法(令和7年法律第53号)2025/9全面施行
+- 個人情報保護法 3年ごと見直し(2026/1 制度改正大綱)

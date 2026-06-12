@@ -1,0 +1,42 @@
+# S2 理想形(To-Be)— 索引と決定状態マップ
+
+ロードマップ [S2](../../roadmap.md) の成果物。**「あるべき姿(To-Be)」と判断の枠組み・基準**を、出典で裏付けて定める。
+**社内の制約(リソース・既存規程・スケジュール)はまだ考えない**——それらと突き合わせた実行可能な落とし所はS3で確定する。
+
+> 本ディレクトリの指針・禁止事項・基準は **To-Be(理想版)**。S3で As-Is と突き合わせ Must/Should/Later に段階適用する前提。
+
+## 文書構成
+
+| # | 文書 | 内容 | 群 |
+|---|---|---|---|
+| 00 | [基本原則・適用対象・設計判断](00-principles-and-scope.md) | AI利用の基本原則/誰・何に適用するか/体制・ポリシー型・自律度方針(D群) | D |
+| 01 | [リスク分類・格付け基準](01-risk-classification-and-grading.md) | ユースケース3区分の判断軸/リスク台帳分類体系/データ機密区分×利用可否 | A |
+| 02 | [AI利用指針・禁止事項](02-acceptable-use-and-prohibitions.md) | ★親PJ中核。基本指針/禁止事項/承認制事項/自由利用範囲 | A→ |
+| 03 | [起点3点の理想統制像](03-three-pillars-to-be.md) | ①機密データフィルタリング ②監査ログ監視 ③生成物の法的適合性 | B |
+| 04 | [運用フロー・体制のTo-Be](04-operational-flows.md) | 申請審査/HITL/インシデント/シャドーAI/ベンダー評価/教育 | C |
+
+## 決定状態マップ
+
+| 決定事項 | 状態 | 主な根拠(S1) |
+|---|---|---|
+| D-1 ガバナンス体制類型(Functional→Centralized移行) | 暫定確定 | [Palo Alto WP](../../sources/2026-04_paloalto-idira_securing-agentic-ai-identity-foundation.md) |
+| D-2 ポリシー構成型(既存ポリシー基盤型) | 暫定確定 | [別添2A本体](../../sources/2026-03-31_meti-soumu_ai-business-guideline_v1.2_attachment-main.md) |
+| D-3 エージェント自律度方針(Least-Agency/単一境界) | 暫定確定 | [OWASP ASI](../../sources/2025-12_owasp_top10-for-agentic-applications-2026.md) |
+| D-4 社内版/外販版の二形態設計 | 方針確定 | ロードマップ基本思想 |
+| A-1 ユースケース・リスク格付け基準 | ドラフト | EU AI Act階層/総務省GLリスクベース |
+| A-2 リスク台帳分類体系(ASI×T二層) | 確定 | [ASI](../../sources/2025-12_owasp_top10-for-agentic-applications-2026.md)/[T&M](../../sources/2025-12_owasp_agentic-ai-threats-and-mitigations_v1.1.md) |
+| A-3 データ機密区分×利用可否 | ドラフト | 営業秘密(不競法)/個情法/総務省GL |
+| B-1 機密データフィルタリングTo-Be | ドラフト | [総務省GL別添](../../sources/2026-03_soumu_ai-security-technical-measures-guideline_attachment.md)/ASI06 |
+| B-2 監査ログ監視フローTo-Be | ドラフト | T8/observability非交渉/PB1 |
+| B-3 生成物の法的適合性To-Be | ドラフト | [文化庁](../../sources/2024-03-15_bunkacho_ai-and-copyright-approach.md) |
+| C-1〜C-6 運用フロー | ドラフト | 別添2A/各プレイブック |
+
+## 優先順位(親PJ F2=2026/7納期)
+
+ロードマップの「起点3点を先行縦断」方針に従う。
+
+1. **D群を正式記録**(S1で答えが出ている→確認のみ)
+1. **A-1 リスク格付け基準**(全ルールの背骨)
+1. **02 利用指針・禁止事項**(親PJ要求の中核納品物)
+1. **B-1〜3 起点3点 To-Be**
+1. C-1/C-2/C-3(申請審査・HITL・インシデント)を優先、C-4〜6は並行
