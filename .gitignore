@@ -41,6 +41,7 @@ change.patch
 gemini/
 .deploy_state
 *.pdf
+*.xlsx
 
 # Test mode environment variable file
 .test_mode_env

@@ -1,0 +1,91 @@
+# Google「Secure AI Framework(SAIF)」— 構造化要約(Web巡回版)
+
+| 項目 | 内容 |
+|---|---|
+| 原典 | https://saif.google/secure-ai-framework(Webサイト。PDF原典なし)。巡回ページ: /risks・/components・/controls・/focus-on-agents・/why-saif・/risk-self-assessment |
+| 発行元 | Google。Secure AI Framework(セキュアAIフレームワーク、SAIF)。SAIF 2.0でAIエージェントのセキュリティを拡充 |
+| 区分 | **ベンダー(Google)フレームワーク**。⚠ただし**Gemini Enterprise = Googleの製品**なので、本プロジェクトでは「導入基盤の提供元自身のセキュリティ枠組み」=S4技術実装への最重要ブリッジ。AIリスク15種 × 統制約25種をSAIFマップ上で対応づけ |
+| 巡回日 | 2026-06-13 |
+
+> ★ S1必須の最後の1本。これまでの中立標準(OWASP/NIST/ISO)・国内GLが「何を守るか」の枠組みなら、**SAIFは自社が導入するGemini基盤を作ったGoogle自身の実装志向フレームワーク**。リスク→統制の対応表が具体的で、[S4の技術統制マッピング](../roadmap.md)(DLP/VPC-SC/IAM/監査ログ)へ最短で橋渡しできる。NIST AI RMF・SSDF(セキュアソフトウェア開発フレームワーク)と整合を明言。ライセンス表記はサイト規約に従う(引用時に出所明記)。
+
+______________________________________________________________________
+
+## 0. SAIFの全体構造
+
+- **SAIFマップ(SAIF Map)**: AI開発プロセス上にリスクとその統制を配置する「共通語彙+地図」。**4つのコンポーネント領域 × リスク × 統制**で構成。
+- **4つのコンポーネント領域**:
+  - **データ(Data)**(データソース/フィルタ・処理/学習データ)— 「データがコードの役割を帯びる」のが新しさ
+  - **インフラ(Infrastructure)**(モデルフレームワーク・コード/学習・調整・評価/データ・モデル保管/モデル配信)
+  - **モデル(Model)**(モデル本体/入力処理/出力処理)
+  - **アプリケーション(Application)**(アプリ/エージェント=外部サービス・ツール呼び出し)
+- **2つの立場**: **モデル作成者(Model Creator)**(モデルを学習・微調整する側)と **モデル利用者(Model Consumer)**(既存モデルでプロダクトを作る側)。境界でどのインフラ統制が効くかが変わる。**自社モデルを配信する利用者は、作成者と同じ配信リスクを負う**。
+- 提供物: SAIFマップ / リスク自己評価ツール(Risk Self-Assessment)/ セキュアAI開発入門(Secure AI Development Primer)/ 技術リソース(Technical Resources)。NIST AI RMF・SSDF対応を支援。
+
+## ★ 1. AIリスク15種(略号付き)× 起点3点
+
+| 略号 | リスク(和名/原語) | 主な対象 | 起点 |
+|---|---|---|---|
+| DP | 学習データ汚染(Data Poisoning)=汚染データ注入・バックドア | 作成者 | ①③ |
+| UTD | 無許諾学習データ(Unauthorized Training Data)=同意なし/著作権/法規制 | 作成者 | ①③ |
+| MST | モデルソース改ざん(Model Source Tampering)=コード・重みの供給網/内部犯による改ざん | 作成者 | ① |
+| EDH | 過剰なデータ取扱い(Excessive Data Handling)=ポリシー超のデータ収集・保持・処理・共有 | 作成者 | ① |
+| MXF | モデル窃取(Model Exfiltration)=知的財産の流出 | 作成者/利用者 | ① |
+| MDT | モデル配備の改ざん(Model Deployment Tampering)=配信基盤の不正変更 | 作成者/利用者 | ① |
+| DMS | MLサービスの妨害(Denial of ML Service)=高負荷クエリ等で可用性低下 | 利用者 | ② |
+| MRE | モデルのリバースエンジニアリング(Model Reverse Engineering)=API乱用でモデル複製 | 利用者 | ① |
+| IIC | 安全でない統合コンポーネント(Insecure Integrated Component)=プラグイン・ライブラリの脆弱性 | 利用者 | ①② |
+| PIJ | プロンプトインジェクション(Prompt Injection)=命令とデータの境界悪用 | 作成者/利用者 | ①②③ |
+| MEV | モデル回避(Model Evasion)=入力を微小摂動させ誤推論を誘発 | 作成者/利用者 | ② |
+| SDD | 機密情報の漏えい(Sensitive Data Disclosure)=クエリ/エージェント経由 | 作成者/利用者 | ① |
+| ISD | 機微情報の推論(Inferred Sensitive Data)=学習データにない機微情報を推論で導出 | 作成者/利用者 | ① |
+| IMO | 安全でないモデル出力(Insecure Model Output)=未検証出力を下流に渡す | 利用者 | ②③ |
+| RA | **エージェントの不正行動(Rogue Actions)=意図せぬ行動(誤動作/注入)** | 利用者 | ②③ |
+
+## ★ 2. 統制 約25種(6グループ)× 緩和するリスク
+
+| グループ | 主な統制(緩和するリスクの略号) |
+|---|---|
+| **データ** | プライバシー強化技術(SDD)/ 学習データ管理(ISD・UTD)/ 学習データのサニタイズ=無害化(DP・UTD)/ ユーザデータ管理(SDD・EDH) |
+| **インフラ** | モデル・データの在庫管理(DP・MST・MXF)/ モデル・データのアクセス制御(同)/ モデル・データの完全性管理(DP・MST)/ セキュア・バイ・デフォルトのML基盤(DP・MST・MXF・MDT) |
+| **モデル** | 入力の検証・サニタイズ(PIJ)/ 出力の検証・サニタイズ(PIJ・RA・SDD・ISD)/ 敵対的訓練・テスト(MEV・PIJ・SDD・ISD・IMO) |
+| **アプリケーション** | アプリのアクセス管理(DMS・MRE)/ 利用者への透明性・制御(SDD・EDH)/ **エージェント行動へのユーザ承認(SDD・RA)**/ **エージェント権限=最小権限・動的権限(IIC・SDD・RA)**/ **エージェントの可観測性=行動・ツール利用・推論のログ化(SDD・RA)** |
+| **保証(Assurance)** | レッドチーミング / 脆弱性管理 / 脅威検知 / インシデント対応管理(いずれも全リスク) |
+| **ガバナンス** | 利用者向け方針・教育 / 社内向け方針・教育 / プロダクト・ガバナンス / リスク・ガバナンス=残余リスクの棚卸し・測定・監視(全リスク) |
+
+## 3. エージェントのセキュリティ(SAIF 2.0)
+
+- エージェント固有の主リスク: **SDD(特権アクセスでメール・ファイル・PC全体に到達し大量持出)** と **RA(意図せぬ行動)**。
+- 多層防御の柱(3点): **最小権限(エージェント権限)/ ユーザ承認(エージェント行動への承認)/ 透明性・監査(エージェントの可観測性)**。
+- 単一点の対策に頼らず「システムの複数レベル」で守る。
+
+## 4. リスク自己評価ツール(Risk Self-Assessment)
+
+- 立場(作成者/利用者)+ 12の質問領域(学習データ管理・機密データ・在庫管理・アクセス・供給網・アプリ防御・敵対的テスト・エージェント配備能力等)にYes/No/Maybeで回答。
+- 出力 = **個別の「SAIFリスクレポート」**(該当する15リスク+推奨統制+詳細リンク+どの設問が該当を示したか)。データ収集なしの共有リンクで配布可。
+
+______________________________________________________________________
+
+## 自社(e-Agency / 内部統制分科会)への適用示唆
+
+1. **Gemini基盤提供元自身の枠組み=S4実装への最短ブリッジ**: 導入するGemini Enterpriseを作ったGoogleの枠組みなので、SAIFの統制はそのままGoogle Cloud機能([S4](../roadmap.md): DLP API/VPC-SC/IAM/監査ログ/Model Armor等)へ写像しやすい。中立標準(OWASP/NIST)で「何を」を決め、SAIFで「Geminiでどう」を埋める分担。
+1. **e-Agencyは主にモデル利用者、一部モデル作成者**: 社内Gemini利用・外部AI利用=モデル利用者。自社AIエージェント開発=部分的にモデル作成者。**利用者向け統制(アプリケーション/エージェント/保証/ガバナンス)が当面の主戦場**で、作成者向け(学習データ汚染等)は自社学習をしない限り優先度低。この切り分けはAs-Is評価の重心決めに使える([サンノゼの「測定」評価が低かったのと同じ構造](2024_san-jose_ai-rmf-self-assessment.md))。
+1. **エージェント3統制=うちのTo-Beと完全一致**: エージェント権限(最小権限)=[D-3 Least-Agency](../docs/to-be/00-principles-and-scope.md)、エージェント行動への承認=[C-2 HITL](../docs/to-be/04-operational-flows.md)、エージェントの可観測性(ログ化)=[B-2 監査ログ](../docs/to-be/03-three-pillars-to-be.md)。**Googleの公式枠組みが起点②と自律度方針を同じ結論で裏付け**=確度が高い。S4でこの3つをGemini設定に落とす。
+1. **15リスクをリスク台帳の従属マッピングに追加**: SAIF 15リスクは[A-2台帳](../docs/to-be/01-risk-classification-and-grading.md)にOWASP ASI×T・NIST GAI12・総務省GLと並ぶ「Google実装視点の従属層」として追加。特にRA(不正行動)=ASI/T13・LLM06と対応、SDD(機密情報の漏えい)=起点①の中核。
+1. **リスク自己評価ツールはもう一つのAs-Is道具**: [サンノゼのNIST成熟度採点](2024_san-jose_ai-rmf-self-assessment.md)と並ぶ、Gemini前提の自己評価ツール。利用者向け12設問は社内Gemini導入のAs-Isチェックに直接使える。S0 As-Isを「NIST成熟度1〜4 × SAIF設問」で二段に取る案。
+1. **出力統制の二重機能を再確認**: 出力の検証・サニタイズが PIJ・RA・SDD・ISD を一手に緩和=[B-1出力フィルタが起点①と③の二重機能](../docs/to-be/03-three-pillars-to-be.md)といううちの設計をGoogleも同じ構造で持つ。
+1. **ガバナンス統制=体制確定後の宿題と一致**: リスク・ガバナンス(残余リスクの棚卸し・測定・監視)/ プロダクト・ガバナンス / 教育は、うちのγ運用・C-6教育・改訂ループと対応。体制確定後にここを埋める。
+1. **⚠ベンダー枠組みの留保**: SAIFはGoogle製で自社製品の文脈が濃い。中立性はOWASP/NIST/ISOで担保済なので、SAIFは「Gemini実装の手引き」として使い、規範の根拠は中立標準に置く(Palo Alto WPと同じ扱い)。
+
+## 起点3点との関連
+
+- **① 機密データ** → DP/UTD/MST/EDH/MXF/SDD/ISD/MRE。データ統制群+インフラ統制群+出力検証。
+- **② 監査ログ/監視** → DMS/MEV/IMO/RA。エージェントの可観測性+保証統制群(脅威検知/インシデント対応)。
+- **③ 著作権/法的適合性** → UTD(無許諾学習データ)/DP/IMO/RA。学習データ管理+出力検証。
+
+## 関連
+
+- 中立標準の対応物: [OWASP ASI Top10](2025-12_owasp_top10-for-agentic-applications-2026.md)/[LLM Top10](2024-11_owasp_top10-for-llm-applications-2025.md)(SAIF 15リスクと多くが対応)/[NIST AI RMF](2023-01_nist_ai-rmf-1.0-playbook.md)(SAIFが整合を明言)
+- 同じベンダー枠組み(裏取り対象): [Palo Alto/Idira Securing Agentic AI](2026-04_paloalto-idira_securing-agentic-ai-identity-foundation.md)
+- 自社文書: [00 D-3 Least-Agency](../docs/to-be/00-principles-and-scope.md)/ [03 B-1・B-2](../docs/to-be/03-three-pillars-to-be.md)/ [04 C-2 HITL](../docs/to-be/04-operational-flows.md)/ S4技術実装([ロードマップ](../roadmap.md))
+- 自己評価の仲間: [サンノゼ市 NIST自己評価](2024_san-jose_ai-rmf-self-assessment.md)

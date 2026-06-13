@@ -24,6 +24,13 @@
 | 民間(ベンダーWP) | [Palo Alto/Idira: Securing Agentic AI(アイデンティティ基盤)](2026-04_paloalto-idira_securing-agentic-ai-identity-foundation.md) | ★総務省GLが対象外としたAIエージェント特有リスクを埋める。**新リスク5類型**(権限昇格/無記録データ持出/なりすまし/連鎖脆弱性/汚染伝播)、**統制4領域**(レジストリ+JIT/監視/キルスイッチ/ソース検証)、ガバナンス3類型。マルチAgentは封じ込め不能=単一境界維持が妥当。⚠ベンダー資料→OWASP/NISTで裏取り要(→OWASP ASIで完了) |
 | 中立標準(OWASP) | [OWASP Top 10 for Agentic Applications 2026(ASI01-10)](2025-12_owasp_top10-for-agentic-applications-2026.md) | ★**エージェント特有リスクの中立標準裏取り**。ASI01目標ハイジャック〜ASI10ローグまで10類型+各対策。**Least-Agency(最小エージェンシー)**原則、observability非交渉。付録A=ASI↔LLM Top10↔脅威T1-17↔AIVSSマッピング行列(外販アセスメントの核)、付録D=実インシデント表(**Gemini Trifecta**等)。CC BY-SA 4.0=翻案可。Palo Alto5類型をASIで再構成、総務省GLの空白を充足 |
 | 中立標準(OWASP) | [OWASP Agentic AI – Threats and Mitigations v1.1(T1-T17)](2025-12_owasp_agentic-ai-threats-and-mitigations_v1.1.md) | ★ASI(上位10)の**下位詳細タクソノミ(T1-T17)+6対策プレイブック**。**意思決定ツリー6ステップ**(自律手順/記憶/ツール/認証/人間/マルチ)でユースケース別にリスク選定可=別添7Cの検討対象選定に直結。各プレイブックはProactive/Reactive/Detectiveの3層=対策カタログに転用。T8否認・追跡不能=起点②の独立根拠。「プロンプト/メモリもコード同様にバージョン管理」=内部統制と好相性。CC BY-SA 4.0 |
+| 中立標準(OWASP) | [OWASP Top 10 for LLM Applications 2025(LLM01-10)](2024-11_owasp_top10-for-llm-applications-2025.md) | ★リスク台帳の**LLM単体層の定義書**(ASI/T&Mのエージェント層の土台)。LLM01 PI〜LLM10 無制限消費。新規=LLM07システムプロンプト漏えい/LLM08ベクトル・埋め込み(=B-1クロステナント漏出と同論点)。LLM05「出力をゼロトラスト」・LLM06 Excessive Agency(=Least-Agency)・LLM09誤情報/unsafe code。総務省GL脅威と同粒度で「LLM層=総務省GL+OWASP LLM Top10」を確定。CC BY-SA 4.0 |
+| 国際標準(NIST) | [NIST AI RMF 生成AIプロファイル(AI 600-1)](2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md) | ★S1必須の国際標準。**組織のリスクマネジメント・サイクル(GOVERN/MAP/MEASURE/MANAGE)に生成AIリスクを載せる枠組み**=AI事業者GL第2部Eと発想一致。GAI固有12リスク(CBRN/作話/データプライバシー/有害バイアス/情報完全性/情報セキュリティ/知財/環境影響等)+Action ID付き推奨アクション(=OWASPプレイブックと並ぶ対策カタログ)。付録A=4考慮事項(ガバナンス/コンテンツ来歴=透かし/配備前テスト/インシデント開示)。AIレッドチーミング・SBOM/SLA/SSAE。政府刊行物=自由利用 |
+| 国際標準(NIST) | [NIST AI RMF Playbook(AI RMF 1.0 コンパニオン)](2023-01_nist_ai-rmf-1.0-playbook.md) | ★AI 600-1の**土台となる汎用AI版本体**。4機能(GOVERN/MAP/MEASURE/MANAGE)全サブカテゴリに推奨行動+**「文書化すべき自己質問」**+参考文献。自己質問群=内部監査(γ)・別添7Cの設問に即転用。risk≈impact×likelihood/RAGスケール=A-1格付けの国際裏付け。GOVERN 1.2=方針に含むべき項目チェックリスト。MANAGE 4.3=インシデント/ニアミスDB・変更履歴。これでNIST AI RMFが本体+生成AI版でそろう。政府刊行物=自由利用 |
+| 実適用事例(自治体) | [サンノゼ市 AI RMF 自己評価](2024_san-jose_ai-rmf-self-assessment.md) | ★NIST AI RMFを**自組織のAs-Is評価に適用した実物**(クライアントゼロと同型)。72サブコンポーネントを**成熟度1〜4**(未着手/計画/確立/革新)で採点+根拠+伸ばす点+裏付けリンク(xlsxテンプレ同梱)。As-Is棚卸し(S0)の方法論・テンプレに直接流用可。「72項目は冗長すぎ・もっと短くできる」とのNISTフィードバック=うちの8原則圧縮・起点3点集中の裏付け。公開アルゴリズム登録簿/調達中心ゆえMeasure低の構造もうちと同型 |
+| ベンダー解説(ISO/KPMG) | [KPMG ISO/IEC 42001(AIMS)認証 解説](2025-05_kpmg_iso-iec-42001-aims-certification-overview.md) | ★\*\*第三者認証が取れるAIマネジメントシステム規格(AIMS)\*\*という別の柱。⚠規格本文でなくKPMG(認証機関)の解説=要裏取り。**SoA(適用宣言書)=全AIリスクを文書化し統制目標に紐づけ**=うちのリスク台帳の到達点。ISO 27001と整合設計=D-2(既存基盤型)の裏付け。NIST/OECD/EU AI Actと整合。AIリスク評価+AIインパクト評価の二本立て。認証=自社目標+外販の訴求点。周辺標準(23894/24027/24028/27001等)のマップ |
+| 国際標準(ISO本文) | [ISO/IEC 23894:2023 AIリスク管理ガイダンス(プレビュー)](2023-02_iso-iec-23894-ai-risk-management-guidance_preview.md) | ★**AIリスク管理の進め方ガイド**(42001=器に対し、23894=中で回す作法)。ISO 31000をミラーし「原則→枠組み→プロセス」をAIに具体化=NIST/AI事業者GLと四つ目の同型サイクル。**第4章8原則**(Inclusive/Dynamic/Human&cultural/Continual improvement等)がうちのP原則と高整合。risk=正負両方の逸脱。⚠入手はプレビュー(前付〜第5章冒頭)、第6章詳細・附属書A/B/C(目的・リスク源・ライフサイクル)は有償未取得 |
+| ベンダー枠組み(Google) | [Google Secure AI Framework(SAIF)](2025_google-saif-secure-ai-framework_web.md) | ★**Gemini基盤を作ったGoogle自身の実装志向枠組み**=S4技術実装への最短ブリッジ。SAIF Map=4コンポーネント(Data/Infra/Model/App)× **リスク15種** × \*\*統制約25種(6グループ)\*\*の対応表。**エージェント3統制(Permissions最小権限/User Control承認/Observabilityログ)=うちのD-3/C-2/B-2と完全一致**。Risk Self-Assessment=Gemini前提のAs-Is自己評価ツール。Model Creator/Consumer境界(うちは主にConsumer)。NIST AI RMF/SSDF整合。⚠ベンダー枠組み=規範はOWASP/NIST/ISOで担保、SAIFは実装手引きとして使う。Web巡回(PDF原典なし) |
 
 ## 今後ナレッジ化予定(外部ドキュメント)
 
@@ -33,14 +40,17 @@
   - [x] **OWASP「Agentic AI – Threats and Mitigations v1.1(T1-T17)」** ← 取得済([要約](2025-12_owasp_agentic-ai-threats-and-mitigations_v1.1.md))。ASIの下位詳細タクソノミ+6プレイブック。意思決定ツリーでユースケース別選定
   - [ ] **「Securing Agentic Applications Guide 1.0」/ AIVSS(定量スコア)/ NHI Top 10** ← ASI/T&Mが参照。次の取得候補(エージェント領域はASI+T&Mで主要部分は充足済)
   - [ ] **NIST SP 800-53 AI control overlays**(Palo Alto WPが参照)
+- [△] **ISO/IEC 42001(AIMS)/ ISO/IEC 23894(AIリスク管理)** ← 42001は[KPMG解説で概観取得済](2025-05_kpmg_iso-iec-42001-aims-certification-overview.md)(⚠規格本文は有償・未取得)。23894は[プレビュー取得済](2023-02_iso-iec-23894-ai-risk-management-guidance_preview.md)(原則・枠組みまで。第6章詳細・附属書は有償・未取得)
 - [ ] **ISO/IEC 27090 / 27091**(AIセキュリティ/プライバシー国際規格)← パブコメでCiscoが整合を要求。ISO 42001(マネジメント)と対をなす
-- [ ] MITRE ATLAS / NIST AI RMF(パブコメで多数が参照)
+- [x] NIST AI RMF ← \*\*Playbook(汎用4機能の詳細)+生成AIプロファイル(AI 600-1)\*\*取得済([Playbook](2023-01_nist_ai-rmf-1.0-playbook.md)/[600-1](2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md))。RMF 1.0コア文書(NIST AI 100-1)とAI 100-4(合成コンテンツ来歴)は補足候補
+- [ ] MITRE ATLAS(パブコメで多数が参照)
 - [x] 文化庁「**AIと著作権に関する考え方について**」(令和6年3月)← 起点③の根拠。**取得済**。後続の「**著作権者・利用者向けチェックリスト&ガイダンス**」(別冊・実務版)は未取得
 - NIST AI RMF(Govern/Map/Measure/Manage)
 - ISO/IEC 42001(AIマネジメントシステム)← G7ツールキットでも中核リソース。優先度↑
 - OECD AIシステム分類フレームワーク / CAN/DGSI 101:2025(SME向け) ← G7ツールキット経由で把握
-- Google SAIF(Secure AI Framework)
-- OWASP LLM Top 10 / MITRE ATLAS
+- [x] Google SAIF(Secure AI Framework)← Web巡回で取得済([要約](2025_google-saif-secure-ai-framework_web.md))。Gemini前提の実装志向枠組み=S4ブリッジ。リスク15×統制25
+- [x] OWASP LLM Top 10(2025)← 取得済([要約](2024-11_owasp_top10-for-llm-applications-2025.md))。リスク台帳のLLM単体層を確定
+- MITRE ATLAS
 
 ## 法改正・動向ウォッチ(改訂ループS4の監視対象)
 

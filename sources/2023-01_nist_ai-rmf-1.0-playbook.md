@@ -1,0 +1,60 @@
+# NIST「AI RMF Playbook」(AI RMF 1.0 コンパニオン)— 構造化要約
+
+| 項目 | 内容 |
+|---|---|
+| 原典 | `2023-01_nist_ai-rmf-1.0-playbook.pdf`(全147ページ・英語) |
+| 発行元 | NIST。AI Risk Management Framework(AI RMF 1.0 / NIST AI 100-1、2023年1月)の**実務コンパニオン**。NIST Trustworthy & Responsible AI Resource Center(AIRC)でホスト・随時更新される生きた文書 |
+| 区分 | **国際標準(米国政府)の実装ガイド**。AI RMFコア(4機能=GOVERN/MAP/MEASURE/MANAGE)の全サブカテゴリに「推奨アクション+透明性・文書化の自己質問+参考文献」を付す。チェックリストではなく**任意採用の行動集** |
+| 要約作成日 | 2026-06-13 |
+
+> ★ [生成AIプロファイル(AI 600-1)](2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md)の**土台となる汎用AI版の本体**。AI 600-1がGAI固有リスクを同じ4機能の上に載せたものなのに対し、本Playbookは**AI全般のリスクマネジメント・サイクルの詳細**。これでNIST AI RMFが「本体(Playbook)+生成AI版(600-1)」の両輪でそろう。最大の実用価値は各サブカテゴリの\*\*「Transparency & Documentation=組織が文書化すべき自己質問」\*\*で、内部監査(γ)・別添7Cアセスメントの設問にそのまま使える。政府刊行物=自由利用。
+
+______________________________________________________________________
+
+## 0. AI RMF 4機能の構造
+
+各機能は「望ましいアウトカム」を表し、その下にサブカテゴリ(GOVERN 1.1〜6.2、MAP 1.1〜5.2、MEASURE 1.1〜4.3、MANAGE 1.1〜4.3)がぶら下がる。
+
+| 機能 | アウトカム | 中身(サブカテゴリの主題) |
+|---|---|---|
+| **GOVERN** | リスク管理の文化が組織に根付く | 法令理解(1.1)/方針への信頼性特性の統合(1.2)/リスク許容度(1.3)/説明責任構造(2.x)/多様な人材・利害関係者(3.x)/組織文化・安全(4.x)/フィードバック(5.x)/第三者・サプライチェーン(6.x) |
+| **MAP** | 文脈を認識し、文脈に関わるリスクを特定 | 文脈確立(1.x)/AIの分類(2.x)/能力・目的・コスト便益(3.x)/リスクと便益のマッピング(4.x)/影響の評価(5.x) |
+| **MEASURE** | 特定したリスクを評価・分析・追跡 | 適切な手法の特定(1.x)/信頼性特性の評価(2.x、13サブカテゴリと最多)/リスク追跡の仕組み(3.x)/測定の有効性確認(4.x) |
+| **MANAGE** | 影響予測に基づきリスクを優先順位づけ・対処 | リスク対応の優先順位(1.x)/便益最大化・リスク対処(2.x)/第三者リスクの管理(3.x)/監視・対応・インシデント記録(4.x) |
+
+> 各サブカテゴリの構成は共通: **About(背景)→ Suggested Actions(推奨行動)→ Transparency & Documentation(文書化の自己質問)→ AI Transparency Resources → References**。
+
+______________________________________________________________________
+
+## 1. 自社に効く要点
+
+- **GOVERN 1.1**: 業種・用途・配備文脈に固有の法令を把握し、リスク管理を法的基準に整合。スタッフへの(再)教育方針を維持。→ [00原則P2合法性](../docs/to-be/00-principles-and-scope.md)・[基本指針](../docs/to-be/02-acceptable-use-and-prohibitions.md)の裏付け。
+- **GOVERN 1.2**: 方針は「設計・デフォルトで害を防ぐ(prevent harm by design and default)」=[P6 Secure by Design](../docs/to-be/00-principles-and-scope.md)と一致。方針に含むべき項目リスト(用語定義/既存統制への接続/機微データのデータガバナンス/実験設計・データ品質/モデルテスト/法務レビュー/監視・監査頻度/**変更管理**/利害関係者関与/**内部通報者方針**/インシデント対応計画/第三者AIの包含)。
+- **GOVERN 1.3**: リスク許容度は negligible〜critical。**risk ≈ impact × likelihood**、RAG(赤・黄・緑)スケール=[A-1の4軸格付け・最大値方式](../docs/to-be/01-risk-classification-and-grading.md)と[総務省GLのリスクベース2軸](2026-03_soumu_ai-security-technical-measures-guideline_main.md)の国際的裏付け。「最も充実した管理では全モデルにリスクレベルを付与」=リスク台帳の発想。
+- **GOVERN 6.x(第三者)**: サプライチェーン透明性(SBOM/SLA/SSAE)→ [C-5ベンダー評価](../docs/to-be/04-operational-flows.md)。
+- **MANAGE 4.3(インシデント)**: 誤り・ニアミス・インシデント・負の影響の**データベース化**(報告日/件数/影響評価/対応)+**システム変更履歴・版管理メタデータの保持**。→ [C-3インシデント対応](../docs/to-be/04-operational-flows.md)。AI 600-1のMG-4.3と同系。
+- **Transparency & Documentation の自己質問**: 各サブカテゴリ末尾の「組織が文書化すべきこと」(例:「規制環境をどこまで定義・文書化したか」「方針は宣言した価値と整合するか」「外部利害関係者に設計・運用・限界のどんな情報を開示しているか」)は、**内部監査(γ)の自己評価チェックリスト**として即転用できる。
+
+______________________________________________________________________
+
+## 自社(e-Agency / 内部統制分科会)への適用示唆
+
+1. **NIST AI RMFが本体+生成AI版でそろった**: 本Playbook(汎用4機能の詳細)+[AI 600-1(生成AI固有リスク)](2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md)。S1必須のNISTを実質充足(RMF 1.0コア文書 NIST AI 100-1 本体テキストは未取得だが、Playbookで4機能の中身は把握できた)。
+1. **ガバナンス・サイクルの三重裏付け**: GOVERN/MAP/MEASURE/MANAGE=[AI事業者GL第2部E](2026-03-31_meti-soumu_ai-business-guideline_v1.2_main.md)のサイクル=[改訂ループ](../roadmap.md)。国内GL+NIST(本体・生成AI版)で[P8アジャイル・ガバナンス](../docs/to-be/00-principles-and-scope.md)を厚く根拠づけ。
+1. **格付け基準(A-1)の国際的裏付け**: 「risk ≈ impact × likelihood」「RAGスケール」「全モデルにリスクレベル付与」は、[A-1の4軸・最大値方式](../docs/to-be/01-risk-classification-and-grading.md)とリスク台帳の発想を国際標準で支持。S3で社内基準を正当化する論拠になる。
+1. **内部監査(γ)の自己評価設問が手に入った**: 各サブカテゴリの「Transparency & Documentation」自己質問群は、内部統制分科会(γ)の点検・[別添7C](2026-03-31_meti-soumu_ai-business-guideline_v1.2_worksheet.md)の設問・外販アセスメントの質問項目にそのまま転用できる(政府刊行物=改変・商用可)。
+1. **方針に含むべき項目リスト(GOVERN 1.2)が網羅チェックに使える**: 変更管理・内部通報者方針・インシデント対応・第三者AIの包含など、[02利用指針](../docs/to-be/02-acceptable-use-and-prohibitions.md)・[D-2既存ポリシー基盤型](../docs/to-be/00-principles-and-scope.md)の「抜けがないか」検証リストになる。
+1. **AI 600-1との使い分け**: 「汎用AIの行動はPlaybook、生成AI固有の上乗せは600-1」。外販テンプレでは両方のAction/サブカテゴリ番号を併記すれば、顧客の成熟度に応じて深さを調整できる。
+
+## 起点3点との関連
+
+- **① 機密データ** → GOVERN 1.2(機微データのデータガバナンス)/MAP(文脈・データ来歴)/GOVERN 6.x(第三者)。
+- **② 監査ログ/監視** → MANAGE 4.x(配備後監視・インシデント記録・変更履歴)/MEASURE 3.x(リスク追跡)。
+- **③ 著作権/法的適合性** → GOVERN 1.1(法令整合)/MEASURE 2.x(信頼性特性の評価=公平性・有効性等)。生成物固有は[AI 600-1](2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md)で補完。
+
+## 関連
+
+- 生成AI版(同じ4機能の上の上乗せ): [NIST AI RMF 生成AIプロファイル(AI 600-1)](2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md)
+- 国内対応物: [AI事業者ガイドライン 第1.2版 本編](2026-03-31_meti-soumu_ai-business-guideline_v1.2_main.md)(第2部E ガバナンス構築サイクル)
+- 自社文書: [01 リスク格付け基準](../docs/to-be/01-risk-classification-and-grading.md)(A-1=risk≈impact×likelihood裏付け)/ [04 運用フロー](../docs/to-be/04-operational-flows.md)(C-3インシデント、C-5第三者、γ自己評価)
+- 次の取得候補: NIST AI RMF 1.0 本体(NIST AI 100-1)/ NIST AI 100-4(合成コンテンツ来歴)
