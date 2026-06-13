@@ -35,22 +35,24 @@ ______________________________________________________________________
 | 生成物の法的適合性 To-Be | ドラフト | [文化庁](../../sources/2024-03-15_bunkacho_ai-and-copyright-approach.md) |
 | 運用フロー(申請審査/HITL/インシデント等) | ドラフト | 別添2A/各プレイブック |
 
+> 各決定の**全基準にわたる根拠の束ね**は[framework-comparison.md](../framework-comparison.md)(§4 起点3点×基準、§5 P原則×基準)を参照。S1で読んだ6資料は本文へ統合済(下記「反映状況」)。
+
 ______________________________________________________________________
 
-## S1新規読込の反映待ち
+## S1新規読込の反映状況(2026-06-14 反映済み)
 
-To-Be成果物(00〜04)作成後に読み込んだS1資料で、**まだ本文に反映していない**もの。次回改訂で取り込む。
+To-Be成果物(00〜04)作成後に読み込んだS1資料6件を、本文へ統合済み。横断的な対応関係は[framework-comparison.md](../framework-comparison.md)に集約した。
 
-| 未反映の資料 | 影響する文書 | 取り込むべき論点 |
-|---|---|---|
-| [OWASP LLM Top 10 2025(LLM01-10)](../../sources/2024-11_owasp_top10-for-llm-applications-2025.md)(2026-06-13読込) | 01(A-2台帳)/03(B-1)/02(禁止事項) | ・01のリスク台帳に「LLM単体層=総務省GL+OWASP LLM Top10」を明記(現状はT&M要約への参照のみで、LLM Top10の要約はまだ紐づけていない)<br>・03 B-1にLLM08(ベクトル・埋め込み脆弱性=クロステナント漏出と同論点)を出典として追加<br>・LLM07(システムプロンプトに秘密を置かない)をGeminiエージェント構築の禁止事項候補としてS3で検討<br>・LLM05(出力もゼロトラスト)を00のゼロトラスト原則に追記検討 |
-| [NIST AI RMF 生成AIプロファイル(AI 600-1)](../../sources/2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md)(2026-06-13読込) | 01(A-2台帳)/03(B-3)/04(C-3,C-5)/00(改訂ループ) | ・01のA-2台帳の従属マッピングにNIST GAI 12リスク(環境影響・有害バイアス・情報完全性・知財・CBRN等の組織/社会リスク軸)を追加<br>・03 B-3に「コンテンツ来歴(電子透かし・合成コンテンツ検出)」統制を追加<br>・04 C-3に「インシデントの外部報告(規制当局)」観点、C-5に「SSAE報告」確認項目を追加<br>・GOVERN/MAP/MEASURE/MANAGEを00の改訂ループ・P8の国際標準裏付けとして併記<br>・別添7Cの「具体的アプローチ」列にNIST GV/MP/MS/MG番号を併記する案(外販クロス参照) |
-| [NIST AI RMF Playbook(AI RMF 1.0)](../../sources/2023-01_nist_ai-rmf-1.0-playbook.md)(2026-06-13読込) | 01(A-1)/04(γ運用)/02(網羅チェック) | ・01 A-1に「risk≈impact×likelihood/RAGスケール」の国際裏付けを脚注追加<br>・各サブカテゴリの「文書化すべき自己質問」を内部監査(γ)の自己評価チェックリスト/別添7C設問に転用(S3)<br>・GOVERN 1.2「方針に含むべき項目リスト」で02・D-2の抜け漏れ検証 |
-| [サンノゼ市 AI RMF 自己評価](../../sources/2024_san-jose_ai-rmf-self-assessment.md)(2026-06-13読込) | S0 As-Is/04(C-1,γ)/外販テンプレ | ・As-Is棚卸し(S0)を成熟度1〜4採点方式で実施(xlsxテンプレ流用、体制確定後)<br>・04 C-1台帳に「公開アルゴリズム登録簿(対外公開版台帳)」の発想を追加検討<br>・改訂ループKPIに「成熟度スコアの推移」<br>・外販に「組織成熟度自己評価」テンプレを別添7C(個別ユースケース評価)と二本立てで用意 |
-| [ISO/IEC 42001(AIMS, KPMG解説)](../../sources/2025-05_kpmg_iso-iec-42001-aims-certification-overview.md)+[ISO/IEC 23894(リスク管理)](../../sources/2023-02_iso-iec-23894-ai-risk-management-guidance_preview.md)(2026-06-13読込) | 00(原則・D-2)/01(台帳→SoA)/04(C-5)/全体 | ・00の8原則を「ISO 23894の8原則と整合」と明記(Inclusive/Dynamic/Human&cultural/Continual improvement)<br>・01のリスク台帳を将来「SoA(適用宣言書)=全リスク→統制目標」に昇格できる粒度で設計<br>・D-2(既存基盤型)に「ISO 27001 ISMSにAIMSを統合」の国際定石を裏付けとして追記<br>・C-5/外販契約に「継続学習が契約義務に影響/学習データ所有権」(23894 5.4.1)を追加<br>・将来のISO 42001認証取得を外販訴求・自社成熟度証明の選択肢としてS3以降で検討(規格本文は有償) |
-| [Google SAIF](../../sources/2025_google-saif-secure-ai-framework_web.md)(2026-06-13巡回) | 01(A-2台帳)/03(B-1,B-2)/00(D-3)/04(C-2)/S0,S4 | ・01のA-2台帳にSAIF 15リスク(Google実装視点の従属層、特にRA/SDD)を追加<br>・03 B-1出力検証の「PIJ/RA/SDD/ISDを一手に緩和」二重機能をSAIFで補強、B-2にAgent Observabilityを明記<br>・D-3/C-2をSAIFエージェント3統制(Permissions/User Control/Observability)で裏付け補強<br>・S0 As-IsをSAIF Risk Self-Assessment(Consumer向け12設問)でも実施(NIST成熟度と二段)<br>・S4でSAIF統制25種→Google Cloud機能(DLP/VPC-SC/IAM/Audit Logs/Model Armor)へ写像 |
+| 反映元の資料 | 反映先(主な統合箇所) |
+|---|---|
+| [OWASP LLM Top 10 2025](../../sources/2024-11_owasp_top10-for-llm-applications-2025.md) | 00(出力ゼロトラスト=LLM05)/01 A-2(LLM単体層を明記)/02(F13システムプロンプト=LLM07、出力ゼロトラスト)/03 B-1(LLM08ベクトル漏出) |
+| [NIST 生成AIプロファイル(AI 600-1)](../../sources/2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md) | 00(P原則出典・8原則)/01 A-2(GAI12リスク従属層)/03 B-3(コンテンツ来歴)・B-2(配備後監視)/04 C-3(外部報告・ニアミスDB)・C-5(SSAE) |
+| [NIST AI RMF Playbook](../../sources/2023-01_nist_ai-rmf-1.0-playbook.md) | 01 A-1(risk≈impact×likelihood裏付け)/00 D-2(GOVERN1.2網羅チェック)/04 §7(γ自己評価設問) |
+| [サンノゼ市 AI RMF 自己評価](../../sources/2024_san-jose_ai-rmf-self-assessment.md) | 04 C-1(公開アルゴリズム登録簿)・§7(成熟度1〜4採点・As-Is方法論)/外販(組織成熟度テンプレ) |
+| [ISO 42001(AIMS)](../../sources/2025-05_kpmg_iso-iec-42001-aims-certification-overview.md)+[ISO 23894](../../sources/2023-02_iso-iec-23894-ai-risk-management-guidance_preview.md) | 00(8原則の国際整合・D-2のISO27001統合)/01 A-2(台帳→SoA昇格設計)/04 C-5(契約論点=継続学習・データ所有権) |
+| [Google SAIF](../../sources/2025_google-saif-secure-ai-framework_web.md) | 00 D-3・P4/P5(エージェント3統制)/01 A-2(SAIF15リスク)/03 B-1・B-2(データ統制・可観測性・S4写像)/04(承認材料にSAIF統制) |
 
-> 注:01のA-2分類体系では「OWASP LLM Top 10(2025)」を従属マッピングの枠として既に**置いて**いるが、[要約](../../sources/2024-11_owasp_top10-for-llm-applications-2025.md)の具体内容(各LLM項目)とのリンクづけは未。
+> 残課題(S3以降): ①ISO規格本文の有償部分(SoA詳細・23894附属書A/B)取得判断 ②体制確定後にγ自己評価・As-Is棚卸しを実施 ③LLM07/F13など開発者向け禁止のS3具体化。
 
 ______________________________________________________________________
 

@@ -19,6 +19,7 @@ ______________________________________________________________________
 | **④ 可逆性** | いつでも取り消せる | 手戻り可能 | 不可逆(送金・本番変更・公開・データ削除) |
 
 > EU AI Actのリスク階層(許容不可/高/限定/最小)と総務省GLのリスクベース2軸(影響の大きさ×発生可能性)を、自社運用に合わせて4軸へ具体化。
+> この「リスク≈影響度×発生可能性」と段階スケールの考え方は、[NIST AI RMF Playbook GOVERN 1.3](../../sources/2023-01_nist_ai-rmf-1.0-playbook.md)(risk≈impact×likelihood、RAG=赤黄緑スケール、全モデルにリスクレベルを付与)でも国際的に支持される。
 
 ### 利用リスク3区分(格付け結果の振り分け先)
 
@@ -39,18 +40,26 @@ ______________________________________________________________________
 
 脅威の分類は中立標準2本を背骨にした二層構造に確定。新規リスクはこの体系に位置づけて登録する。
 
-```
-一次分類: OWASP ASI01–10(エージェント上位リスク)
-   └ 細目: OWASP T1–T17(Threats & Mitigations の詳細タクソノミ)
-        └ 従属マッピング:
-            ├ 総務省AIセキュリティGL の脅威(PI直接/間接・DoS・データポイズニング・モデル抽出)= LLM層
-            ├ Palo Alto 新リスク5類型(権限昇格/無記録持出/なりすまし/連鎖脆弱性/汚染伝播)
-            └ OWASP LLM Top 10(2025)/ AIVSS Core Risk(将来:定量スコア)
+```mermaid
+%%{init: {'flowchart': {'wrappingWidth': 380}}}%%
+flowchart TD
+    P["<b>一次分類</b>:OWASP ASI01–10<br/>(エージェント上位リスク)"]
+    S["<b>細目</b>:OWASP T1–T17<br/>(Threats & Mitigations の詳細タクソノミ)"]
+    SUB["<b>従属マッピング</b>:同じ脅威を複数の視点で裏取り"]
+    P --> S --> SUB
+    SUB --> M1["OWASP LLM Top 10(LLM01–10)= LLMアプリ単体層"]
+    SUB --> M2["総務省AIセキュリティGL(PI直接/間接・DoS・データポイズニング・モデル抽出)= LLM層"]
+    SUB --> M3["NIST 生成AI 12リスク = 組織・社会リスク軸(CBRN/作話/バイアス/情報完全性/知財/環境影響 等)"]
+    SUB --> M4["Google SAIF 15リスク = Gemini実装視点(DP/SDD/RA 等)"]
+    SUB --> M5["Palo Alto 新リスク5類型(権限昇格/無記録持出/なりすまし/連鎖脆弱性/汚染伝播)"]
+    SUB --> M6["AIVSS Core Risk(将来:定量スコア)"]
 ```
 
-- LLM単体の脅威=総務省GL+OWASP LLM Top10、エージェント=ASI×T、で参照根拠を二層提示できる。
+- 二層+従属で同じ脅威を複数視点から裏取りできる:LLM単体=[OWASP LLM Top10](../../sources/2024-11_owasp_top10-for-llm-applications-2025.md)+総務省GL、エージェント=ASI×T、組織・社会軸=[NIST生成AI12リスク](../../sources/2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md)、Gemini実装=[SAIF15リスク](../../sources/2025_google-saif-secure-ai-framework_web.md)。
+- **テーマ別の全基準対応は[framework-comparison.md §2](../framework-comparison.md)の横断表が実体**(21テーマ × 各基準コード)。本台帳の従属マッピングはそこへリンクする運用。
 - 各ユースケースの該当リスクは、[T&M要約](../../sources/2025-12_owasp_agentic-ai-threats-and-mitigations_v1.1.md)の**意思決定ツリー6ステップ**(自律手順/記憶/ツール/認証/人間/マルチ)で機械的に抽出する。
 - 根拠:[ASI付録A](../../sources/2025-12_owasp_top10-for-agentic-applications-2026.md)のマッピング行列。
+- **将来の発展**: 本台帳は[ISO/IEC 42001のSoA(適用宣言書=全AIリスクを統制目標に紐づけ)](../../sources/2025-05_kpmg_iso-iec-42001-aims-certification-overview.md)に昇格できる粒度で設計する。認証を狙う段階で台帳→SoAへ展開。
 
 ______________________________________________________________________
 
@@ -87,4 +96,5 @@ ______________________________________________________________________
 
 - 前: [00 基本原則・適用対象](00-principles-and-scope.md)
 - 次: [02 AI利用指針・禁止事項](02-acceptable-use-and-prohibitions.md)(本基準から導出)
+- リスク台帳の横断対応表: [framework-comparison.md §2](../framework-comparison.md)
 - 実装テンプレ: [別添7Cワークシート](../../sources/2026-03-31_meti-soumu_ai-business-guideline_v1.2_worksheet.md)
