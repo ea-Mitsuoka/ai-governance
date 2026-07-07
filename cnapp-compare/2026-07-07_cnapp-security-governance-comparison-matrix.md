@@ -1,0 +1,211 @@
+# セキュリティ・ガバナンス製品 統合比較マトリクス(2026年7月時点・統合版)
+
+> 対象: Gemini Enterprise 導入に伴うマルチクラウド・ポスチャ / AI-SPM / SIEM 集約の「2層設計」に基づくツール選定・顧客提案の根拠資料。
+> 作成: 内部統制分科会 / 2026-07-07(初版)、同日 統合版に更新。
+> 更新方針: 行を単なる「製品機能」でなく **「提供メニュー・機能項目」** として記述する。**製品が × の行=e-Agency がサービスで埋める領域**(=外販メニューのマネタイズ余地)と読む。
+
+## 凡例
+
+- ◎ = 標準対応・強力(その製品の主戦場)
+- ○ = 一部対応 / 支援可(サブ機能・連携で実現)
+- △ = 限定的 / 要連携(検出のみ・別製品/サービス前提)
+- × = 対応なし(製品では担わない=サービス提供余地)
+
+## 列(8製品・プラン)
+
+①SCC Standard(無料) / ②SCC Premium / ③SCC Enterprise(**2027/5廃止**) / ④SecOps Standard / ⑤SecOps Enterprise / ⑥SecOps Enterprise Plus / ⑦Cloudbase / ⑧Wiz
+
+## 前提となる2026年の製品ポートフォリオ動向(重要)
+
+| 論点 | 事実 | 提案への含意 |
+|---|---|---|
+| **SCC Enterprise ティア廃止** | SCC Enterprise は **2027/5/21 に終了**し、既存組織は自動的に Premium へ移行。AI Protection(Model Armor 含む)/ DSPM は **Premium に GA 集約**済み。 | SCC Enterprise を前提にアーキを組まない。**「SCC Premium(ポスチャ+AI-SPM)+ Google SecOps(SOC/SIEM)」を分離調達**するのが正解。 |
+| **SecOps は3パッケージ構成** | Standard / Enterprise / Enterprise Plus。**Standard=大容量ログの高速検索・長期保管に特化した基本SIEM**(eDiscovery向き)。Enterprise 以上で SOAR + Gemini Agentic Defense、Enterprise Plus で Mandiant TI 無制限。 | 集約先を予算で刻める。SIEM未保有の顧客の**梅プランの受け皿に SecOps Standard**、運用自動化は Enterprise 以上。 |
+| **Google が Wiz 買収完了** | 2026/3 に $32B で買収完了(EU 2月・US 2025/11 クリア)。Google Cloud Security ファミリーに統合。**マルチクラウド相互運用は維持を明言**。 | 「1層=Wiz / 2層=SCC」は将来的に**第一党純正の連携**に。ただし現時点では別契約・別コンソール。顧客がGCP専業でなくてもWizは中立に使える。 |
+| **SecOps の Agentic Defense** | Enterprise / Enterprise Plus で Gemini ネイティブの Triage / Investigation エージェント(2026 Public Preview)。 | SOC自動化(工数削減)を売る場合は SecOps 側。E と E+ の差は主に**脅威インテリジェンスの深さ**。 |
+
+---
+
+## 統合比較マトリクス
+
+### 【基本情報】
+
+| メニュー・機能項目 | ①SCC Std | ②SCC Prm | ③SCC Ent△ | ④SecOps Std | ⑤SecOps Ent | ⑥SecOps Ent+ | ⑦Cloudbase | ⑧Wiz |
+|---|---|---|---|---|---|---|---|---|
+| 製品の主な特徴 | GCP標準の無料ポスチャ確認 | GCP特化のディープ検知+**AI Protection・Model Armor・DSPM集約** | マルチクラウドCNAPP+SIEM/SOAR統合パック(**廃止予定**) | 大容量ログの高速検索・長期保管に特化した基本SIEM | SIEM+SOAR+Gemini Agentic Defense | 最高峰SecOps+Mandiant TI無制限 | **国産CSPM/CNAPP**・日本語運用・SaaS連携 | **世界No.1 CNAPP**・Security Graph・Wiz Code・強力AI-SPM |
+| 料金体系・コスト感 | **無料** | 安価〜中位 | 高額(移行前提のため新規非推奨) | 中位(ログ量課金) | 高額 | 超高額 | **安価**(固定枠課金) | 高額(リソース課金) |
+| 対応クラウド範囲 | GCP | GCP(AWS/Azure一部) | GCP+マルチクラウド接続 | 非依存(ログを飲む) | 非依存 | 非依存 | **AWS/GCP/Azure+SaaS** | **AWS/Azure/GCP/OCI/K8s 全面** |
+
+### 【組織ガバナンス層】(コンサル・ルール策定 → **製品では埋まらない=e-Agency サービスの主戦場**)
+
+| メニュー・機能項目 | ①SCC Std | ②SCC Prm | ③SCC Ent△ | ④SecOps Std | ⑤SecOps Ent | ⑥SecOps Ent+ | ⑦Cloudbase | ⑧Wiz |
+|---|---|---|---|---|---|---|---|---|
+| AI利用実態アセスメント(シャドーAI棚卸し) | × | ○※ | ○※ | × | △ | △ | × | ○※ |
+| AIガバナンス体制構築支援(ポリシー整備) | × | × | × | × | × | × | × | × |
+| AI利用申請・ユースケース審査プロセス設計 | × | × | × | × | × | × | × | × |
+| 従業員向けAIセキュリティ教育研修 | × | × | × | × | × | × | × | × |
+| 生成AI製品ポートフォリオ方針(使い分け) | × | × | × | × | × | × | × | × |
+| 経営層・取締役向けAIリスクブリーフィング | × | × | × | × | × | × | × | × |
+| SAIFリスク自己評価ワークショップ | × | × | × | × | × | × | × | × |
+| 【ツール化】AIガバナンス基盤(ユースケース台帳・承認履歴) | × | × | × | × | × | × | × | × |
+
+> ※ **注:** ○ は「**クラウド内のAIアセット発見**(Vertex/モデル/エージェント)」を指す。「**従業員が外部SaaS AI(ChatGPT等)を使うシャドーAI**」の棚卸しは全製品×(要 Chrome Enterprise / CASB + コンサル)。この層の×行がそのまま外販サービスメニューになる。
+
+### 【ID・アクセス管理 / ネットワーク境界(CIEM / CSPM)】
+
+| メニュー・機能項目 | ①SCC Std | ②SCC Prm | ③SCC Ent△ | ④SecOps Std | ⑤SecOps Ent | ⑥SecOps Ent+ | ⑦Cloudbase | ⑧Wiz |
+|---|---|---|---|---|---|---|---|---|
+| SSO/IdP連携・IAM設計(最小権限化) | ○ | ◎ | ◎ | × | × | × | ○ | ◎ |
+| Workforce Identity Federation 設計 | ○ | ◎ | ◎ | × | × | × | × | ○ |
+| IGA/ITDR・過剰権限の是正(CIEM) | × | ○ | ○ | × | × | × | ◎ | ◎(有効権限+Toxic Combination) |
+| VPC Service Controls 境界設計 | △ | ◎ | ◎ | × | × | × | △ | △(露出分析、VPC-SC設計は不可) |
+| 閉域接続・Private Service Connect 設計 | ○ | ○ | ○ | × | × | × | × | × |
+
+### 【データ保護層(DSPM)】
+
+| メニュー・機能項目 | ①SCC Std | ②SCC Prm | ③SCC Ent△ | ④SecOps Std | ⑤SecOps Ent | ⑥SecOps Ent+ | ⑦Cloudbase | ⑧Wiz |
+|---|---|---|---|---|---|---|---|---|
+| CMEK / EKM・HSM 鍵管理設計 | ○ | ◎ | ◎ | × | × | × | ○ | ○ |
+| データレジデンシー設計(保管地域統制) | △ | ◎ | ◎ | × | × | × | ○ | ○ |
+| データ分類・DLP / 学習不使用方針整理 | × | ◎ | ◎ | × | × | × | △ | ◎ |
+| コネクタ接続設計・ACL過剰共有の検出是正 | × | ○ | ○ | × | × | × | ○ | ○ |
+| プライバシー影響評価(DPIA)対応 | × | × | × | × | × | × | × | × |
+| 生成AIの法務・契約リスク整理(著作権等/起点③) | × | × | × | × | × | × | × | × |
+| データ保持・削除ポリシー設計(リテンション) | ○ | ◎ | ◎ | ○(ログ保持) | ○(ログ保持) | ○(ログ保持) | × | × |
+| 【ツール化】DSPM 導入(マルチクラウド横断) | × | ◎ | ◎ | × | × | × | ○ | ◎ |
+
+### 【AI入出力・運用層(AI-SPM / CWPP)】
+
+| メニュー・機能項目 | ①SCC Std | ②SCC Prm | ③SCC Ent△ | ④SecOps Std | ⑤SecOps Ent | ⑥SecOps Ent+ | ⑦Cloudbase | ⑧Wiz |
+|---|---|---|---|---|---|---|---|---|
+| Model Armor 導入(インジェクション/ジェイルブレイク対策) | × | ◎(インライン遮断) | ◎ | × | × | × | × | **△(検出のみ・遮断不可)** |
+| シャドーAI検出・公式環境への誘導 | × | ○(検出) | ○ | × | △ | △ | × | ○(AI資産棚卸し) |
+| エージェントガバナンス設計(権限・監視) | × | ○ | ○ | × | △ | △ | × | ○ |
+| マルチエージェント連携リスク評価 | × | × | × | × | × | × | × | △ |
+| AIレッドチーミング・セキュリティ診断(定期) | × | △ | △ | × | × | **○(Mandiant)** | × | **△** |
+| Confidential AI 適用検討 | × | ○ | ○ | × | × | × | × | × |
+| CWPP(ワークロード/ランタイム保護) | × | ◎(VM/Container Threat Detection) | ◎ | × | × | × | ○ | ◎(Wiz Defend eBPF) |
+
+> **注:** 入力を**実際にブロック**するインライン防御(LLMファイアウォール)は現状 **Model Armor(SCC Premium/Ent)が事実上唯一**。Wiz は Wiz Defend で実行時「検出」するが遮断はしない。AIレッドチーミングは **Mandiant(SecOps E+)**のサービス領域で、Wiz は AI-SPM ポスチャ止まり。**Gemini の入出力を守るなら SCC Premium は事実上必須**。
+
+### 【監査・運用・SIEM層】
+
+| メニュー・機能項目 | ①SCC Std | ②SCC Prm | ③SCC Ent△ | ④SecOps Std | ⑤SecOps Ent | ⑥SecOps Ent+ | ⑦Cloudbase | ⑧Wiz |
+|---|---|---|---|---|---|---|---|---|
+| Cloud Audit Logs 設計・既存SIEM統合 | ○ | ◎ | ◎ | ◎ | ◎ | ◎ | × | ○ |
+| Access Transparency 運用設計 | × | ◎ | ◎ | × | × | × | × | × |
+| 準拠認証マッピング・責任分界整理 | ○ | ◎ | ◎ | △ | △ | △ | ◎(**FISC/ISMAP/CIS 日本語**) | ◎ |
+| プロンプト・出力ログ保全 / eDiscovery設計 | × | ◎ | ◎ | ◎ | ◎ | ◎ | × | × |
+| ISO/IEC 42001 取得支援・ギャップ分析 | × | × | × | × | × | × | × | × |
+| 取締役会・監査委員会向け報告体制構築 | × | × | × | × | × | × | × | × |
+| 規制動向ウォッチ・継続コンプライアンス更新 | × | × | × | × | × | × | × | × |
+| 既存GRC体系へのAIリスク統合 | × | × | × | × | × | × | × | × |
+| TPRM(委託先管理)の対象範囲拡張 | × | × | × | × | × | × | × | × |
+| マルチクラウドCNAPP戦略(2層設計)策定 | × | ○ | ○ | △ | ○ | ○ | ○ | ◎ |
+| AI-SPM 導入(Gemini集約の推進) | × | ◎ | ◎ | × | × | × | × | ◎ |
+| SIEM戦略整理(既存SIEM併用 / SecOps移行) | × | × | ○ | ◎ | ◎ | ◎ | × | × |
+| セキュリティツール統廃合アセスメント | × | × | × | × | × | × | × | × |
+| 既存SOC / CSIRT のスコープ拡張 | × | ○ | ○ | ○ | ◎ | ◎ | × | ○ |
+| AI固有インシデント対応計画・卓上演習 | × | × | × | × | × | × | × | × |
+| Agentic Defense 導入(SOC自動化) | × | △ | ○ | × | ◎ | ◎(Mandiant内蔵) | × | ○(Wiz Defend) |
+| SSPM のカバレッジ拡張(SaaS監視) | × | × | △ | × | × | × | ○ | △ |
+
+### 【FinOps(AI投資)層】
+
+| メニュー・機能項目 | ①SCC Std | ②SCC Prm | ③SCC Ent△ | ④SecOps Std | ⑤SecOps Ent | ⑥SecOps Ent+ | ⑦Cloudbase | ⑧Wiz |
+|---|---|---|---|---|---|---|---|---|
+| AIコスト可視化・配賦(部門別・FOCUS整合) | × | × | × | × | × | × | ○ | △ |
+| AI価値の定量化(ユニットエコノミクス/ROI) | × | × | × | × | × | × | × | × |
+| AI投資判断・最適化・チャージバック運用 | × | × | × | × | × | × | ○ | × |
+
+> **注:** 本格的な FinOps(Gemini 消費のコスト配賦・ROI)は全製品で薄い。**GCP FinOps Hub / Cloud Billing** または専用ツール + e-Agency の運用サービスで補完する。
+
+### 【導入基盤】
+
+| メニュー・機能項目 | ①SCC Std | ②SCC Prm | ③SCC Ent△ | ④SecOps Std | ⑤SecOps Ent | ⑥SecOps Ent+ | ⑦Cloudbase | ⑧Wiz |
+|---|---|---|---|---|---|---|---|---|
+| Google Cloud ランディングゾーン構築 | × | × | × | × | × | × | × | △(Wiz Code の IaC 支援) |
+
+> **注:** ランディングゾーンは製品ではなく **Terraform / Cloud Foundation Toolkit + SI** の領域=e-Agency の実装サービス。
+
+### 【新規・大分類不適合項目】(CI/CD・開発・相関分析)
+
+| メニュー・機能項目 | ①SCC Std | ②SCC Prm | ③SCC Ent△ | ④SecOps Std | ⑤SecOps Ent | ⑥SecOps Ent+ | ⑦Cloudbase | ⑧Wiz |
+|---|---|---|---|---|---|---|---|---|
+| ★ソフトウェアサプライチェーンセキュリティ(Wiz Code / パイプライン保護・シフトレフト) | × | △ | △ | × | × | × | △ | ◎(コード→クラウド、1-click修正PR) |
+| ★グラフベースのコンテキストリスク分析(Security Graph / 攻撃経路の芋づる式可視化) | × | ○(攻撃経路シミュレーション) | ○ | × | ○(UDMエンティティ相関) | ○ | △ | ◎(製品の代名詞・Toxic Combination) |
+| ★高度な自動プレイブック&脅威ハンティング(Mandiant Intel / 専門アナリストの自動化) | × | △ | ○ | × | ◎ | ◎(TI無制限・Applied TI) | × | △(Google傘下で将来統合) |
+
+---
+
+## CNAPP担当者としての提案シナリオ(試・梅・竹・松)
+
+「2層設計(1層=横断ポスチャ / 2層=GCPディープ / 集約=既存SIEM or SecOps)」を、顧客の予算・既存SIEMの有無・成熟度に応じて5段階で提示する。**共通の設計思想は「SCC Enterprise ティアには依存せず、Premium と SecOps を分離調達する」**こと(2027廃止リスクの回避)。**3つの椅子(1層・2層・集約)に、予算に応じてどの製品を座らせるか**を選ぶだけ。
+
+### プラン組み合わせ早見表
+
+| 観点 | 試A(無料診断) | 試B(超最小) | 梅(最安本番) | 竹(運用自動化) | 松(完全体) |
+|---|---|---|---|---|---|
+| **1層(横断ポスチャ)** | Cloudbase(最小) | Cloudbase(最小) | Cloudbase | Cloudbase / Wiz | Wiz(全モジュール) |
+| **2層(GCP / AI防御)** | SCC Standard | SCC Standard + **Model Armor単体** | SCC Premium | SCC Premium | SCC Premium(AI Protectionフル) |
+| **集約(SIEM / SOC)** | 既存SIEMへエクスポート | 既存SIEM / SecOps Std | SecOps Std / 既存SIEM | SecOps Enterprise | SecOps Enterprise Plus |
+| **Gemini防御** | ×(なし) | △(Model Armorの注入対策のみ) | ◎(+DSPM+AI-SPM) | ◎ | ◎(+Mandiant赤チーム) |
+| **SOC自動化** | × | × | × | ◎(Agentic Defense) | ◎(Mandiant内蔵) |
+| **コスト感** | 無料 | 無料〜ほぼ無料 | 安価〜中位 | 中位〜高 | 最上位 |
+| **Gemini本番運用** | ×(診断のみ) | △(非機密・小規模のみ) | ◎ | ◎ | ◎ |
+| **主な用途** | 稟議前の現状可視化・ドアオープナー | 現場小規模のボトムアップ | 機密データを扱う本番の最小 | 全社標準 | 大手・規制業種 |
+| **e-Agency サービス** | 可視化レポート・棚卸し | +AI利用ポリシー策定 | +統廃合/FinOps | フルガバナンス構築 | +LZ実装/継続赤チーム |
+
+> **段階導入の勘所:** 試A/試B は**予算稟議の前**の無料入口。Gemini に**機密データを入れ始めた瞬間**、DSPM(起点①)が要るので **梅(SCC Premium)へ昇格**が必要。「無料で始めて、機密を扱う段でPremiumへ」という商流にできる。
+
+### 試Aプラン ―「無料アセスメント/健康診断」(AI防御なし)
+
+- **狙い:** 予算稟議の**前**に「御社の今のクラウド設定リスク・過剰権限」を可視化して見せるドアオープナー。
+- **構成:** 1層=Cloudbase(最小)/ 2層=**SCC Standard(無料)** / 集約=既存SIEMへエクスポート。
+- **注意:** 現状可視化のみ。**Gemini そのものは守れない**(Model Armor も DSPM も無い)。本番AI運用には使えない。
+- **重複メモ:** SCC Standard と Cloudbase は GCP の CSPM が重複。SCC Standard は「無料のGCPネイティブなセカンドオピニオン+資産棚卸し」の位置づけ。
+
+### 試Bプラン ―「超最小だがGeminiは守る」(推奨の第0段)
+
+- **狙い:** 現場部署が Gemini を**ほぼ無料で・かつ安全に**使い始める最小単位。ボトムアップの本命入口。
+- **構成:** 1層=Cloudbase(最小)/ 2層=**SCC Standard + Model Armor単体** / 集約=既存SIEM or SecOps Standard。
+- **キー:** Model Armor は SCC Premium 無しで単体利用可(**月200万トークンまで無料**、超過 $0.10/100万トークン)。**Gemini防御で最重要のインジェクション遮断だけを、ほぼ無料で掛けられる**。
+- **失うもの(梅との差):** DSPM(データ機密可視化/起点①)、AI-SPMダッシュボード、GCPディープ脅威検知、攻撃経路シミュレーション。Model Armor の検知結果はSCC画面に自動集約されず手配線が要る。
+
+### 梅プラン ―「最安スモールスタート/ボトムアップ導入」
+
+- **狙い:** マーケ等の現場部署が Gemini を小さく安全に使い始める。CISO 稟議を通しやすい最小構成。
+- **構成:**
+  - 2層(GCP): **SCC Premium** … Gemini を守る **Model Armor + AI Protection + DSPM** をこれ一つでカバー。AI-SPM の心臓部。
+  - 1層(横断): **Cloudbase** … 国産・日本語・安価。FISC/ISMAP マッピングと日本語運用が刺さる。
+  - 集約: **SecOps Standard**(既存SIEMが無い顧客の安価なログ保管庫)or 顧客の既存SIEMへエクスポート。
+- **e-Agency サービス:** シャドーAI棚卸し + AI利用ポリシー策定(製品×の領域)。
+- **コスト感:** 最小。SCC無料枠→Premium昇格の増分 + Cloudbase固定枠 + SecOps Standard のログ量課金。
+
+### 竹プラン ―「運用自動化・横断ガバナンス」(推奨の主力)
+
+- **狙い:** マルチクラウドを横断監視しつつ、Gemini/GCP は深く守り、SOC 運用を自動化。最も費用対効果が高い構成。
+- **構成:**
+  - 1層(横断): **Cloudbase(コスト重視)** または **Wiz(横断力重視)** … 顧客規模で選択。
+  - 2層(GCP): **SCC Premium** … Model Armor によるインライン防御(他製品で代替不可)+ GCPネイティブの深い検知。
+  - 集約/SOC: **Google SecOps Enterprise** … Gemini Triage エージェント(Agentic Defense)で一次対応を自動化。
+- **e-Agency サービス:** ガバナンス策定 + ツール統廃合アセスメント + FinOps 運用。
+- **キーメッセージ:** 「横断は広く、GCP/AIはSCCで深く、運用はSecOpsで自動化」。
+
+### 松プラン ―「エンタープライズ完全体・Agentic SOC」
+
+- **狙い:** 大手・規制業種。攻めのAIガバナンス(レッドチーミング)と自律型SOCまで。
+- **構成:**
+  - 1層: **Wiz(全モジュール)** … Security Graph の Toxic Combination + Wiz Code でサプライチェーン/IaC まで左シフト。
+  - 2層: **SCC Premium(AI Protection フル)** … Model Armor + DSPM + 攻撃経路シミュレーション。
+  - 集約/SOC: **Google SecOps Enterprise Plus** … Mandiant TI 無制限 + Applied TI + Agentic Defense。Mandiant による **AIレッドチーミング**をサービスで上乗せ。
+- **e-Agency サービス:** フルスタックのガバナンス構築 + ランディングゾーン実装 + FinOps最適化 + 継続的レッドチーミング運用。
+- **コスト感:** 最上位。ただし「SIEM/TI/SOC工数の内製コスト削減」でROIを説明。
+
+### 提案時の"殺し文句"(スペシャリスト視点)
+
+1. **「SCC Enterprise は買わないでください」** — 2027廃止。Premium + SecOps 分離が唯一の正解。ここを知っているだけで信頼を得られる。
+2. **「Wiz と SCC は競合ではなく分業」** — 横断可視化(Wiz)とインラインAI防御(Model Armor=SCC)は代替関係にない。両建てが正しい。
+3. **「集約先は予算で刻める」** — SIEM未保有なら SecOps Standard(安価なログ保管庫)から、運用自動化が要れば Enterprise 以上へ段階的に。
+4. **「無料で始めてPremiumへ卒業」** — Model Armor は SCC Premium 無しで単体利用可(月200万トークンまで無料)。SCC Standard + Model Armor単体で"ほぼ無料のGemini入口(試B)"を作り、機密データを扱う段で Premium(DSPM=起点①)へ昇格させる段階導入が組める。
+5. **「製品で埋まらない層がそのまま提案メニュー」** — 組織ガバナンス層・監査運用層の×行(シャドーAI棚卸し・ポリシー策定・審査プロセス設計・教育・ISO42001支援・GRC統合・TPRM・卓上演習・FinOps)は全製品×。**このマトリクスの×行がそのまま e-Agency のマネタイズ余地**。
