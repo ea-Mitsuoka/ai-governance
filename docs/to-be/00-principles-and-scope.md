@@ -10,16 +10,16 @@ ______________________________________________________________________
 総務省AI事業者ガイドラインの共通指針10項目を、e-Agencyの言葉で8原則に圧縮。すべての判断の上位規範。
 この8原則は[ISO/IEC 23894の8原則](../../sources/2023-02_iso-iec-23894-ai-risk-management-guidance_preview.md)(Inclusive/Dynamic/Human & cultural factors/Continual improvement 等)とも整合し、国内GL+国際標準の両系統で裏付けられる。
 
-| # | 原則 | 意味 | 出典 |
-|---|---|---|---|
-| P1 | **人間中心** | AIは人間の判断を補助する。最終責任と重要判断は人間が負う。 | AI事業者GL共通指針/広島指針/[NIST(人間-AI構成)](../../sources/2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md)/SAIF(エージェント行動への承認) |
-| P2 | **合法性・権利尊重** | 法令・契約・第三者の権利(著作権・個人情報・営業秘密)を守る。 | 文化庁/個情法/不競法/NIST GAI10(知財) |
-| P3 | **安全性・セキュリティ確保** | 不正操作による機密漏えい・意図せぬ変更/停止を生じさせない。 | [総務省セキュリティGL](../../sources/2026-03_soumu_ai-security-technical-measures-guideline_main.md)/OWASP/SAIF/ISO 27001 |
-| P4 | **透明性・追跡可能性** | 誰が・何を入力し・何が返り・何を実行したかを記録・説明できる。 | T8/observability非交渉/[SAIF(エージェント可観測性)](../../sources/2025_google-saif-secure-ai-framework_web.md) |
-| P5 | **最小権限・最小エージェンシー** | 権限も自律性も「必要最小限」に絞る。 | [OWASP ASI](../../sources/2025-12_owasp_top10-for-agentic-applications-2026.md)/[SAIF(エージェント権限)](../../sources/2025_google-saif-secure-ai-framework_web.md)/Palo Alto |
-| P6 | **Secure by Design** | 後付けでなく設計段階から統制を組み込む。点でなく面(ライフサイクル全体)で守る。 | Palo Alto「Secure AI by Design」/SAIF(セキュア・バイ・デフォルトのML基盤)/NIST GOVERN1.2 |
-| P7 | **公平性・品質** | 差別・偏見を避け、ハルシネーションを前提に出力を検証する。 | AI事業者GL共通指針/[NIST GAI6(バイアス)](../../sources/2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md)/ISO TR24027 |
-| P8 | **アジャイル・ガバナンス** | 作って終わりにせず、外部基準・事故・新技術に応じて継続改訂する。 | AI事業者GL第2部E/NIST(4機能)/ISO 23894(8原則)/ISO 42001(PDCA) |
+| #   | 原則                             | 意味                                                                           | 出典                                                                                                                                                                          |
+| --- | -------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| P1  | **人間中心**                     | AIは人間の判断を補助する。最終責任と重要判断は人間が負う。                     | AI事業者GL共通指針/広島指針/[NIST(人間-AI構成)](../../sources/2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md)/SAIF(エージェント行動への承認)                           |
+| P2  | **合法性・権利尊重**             | 法令・契約・第三者の権利(著作権・個人情報・営業秘密)を守る。                   | 文化庁/個情法/不競法/NIST GAI10(知財)                                                                                                                                         |
+| P3  | **安全性・セキュリティ確保**     | 不正操作による機密漏えい・意図せぬ変更/停止を生じさせない。                    | [総務省セキュリティGL](../../sources/2026-03_soumu_ai-security-technical-measures-guideline_main.md)/OWASP/SAIF/ISO 27001                                                     |
+| P4  | **透明性・追跡可能性**           | 誰が・何を入力し・何が返り・何を実行したかを記録・説明できる。                 | T8/observability非交渉/[SAIF(エージェント可観測性)](../../sources/2025_google-saif-secure-ai-framework_web.md)                                                                |
+| P5  | **最小権限・最小エージェンシー** | 権限も自律性も「必要最小限」に絞る。                                           | [OWASP ASI](../../sources/2025-12_owasp_top10-for-agentic-applications-2026.md)/[SAIF(エージェント権限)](../../sources/2025_google-saif-secure-ai-framework_web.md)/Palo Alto |
+| P6  | **Secure by Design**             | 後付けでなく設計段階から統制を組み込む。点でなく面(ライフサイクル全体)で守る。 | Palo Alto「Secure AI by Design」/SAIF(セキュア・バイ・デフォルトのML基盤)/NIST GOVERN1.2                                                                                      |
+| P7  | **公平性・品質**                 | 差別・偏見を避け、ハルシネーションを前提に出力を検証する。                     | AI事業者GL共通指針/[NIST GAI6(バイアス)](../../sources/2024-07_nist_ai-rmf-generative-ai-profile_ai-600-1.md)/ISO TR24027                                                     |
+| P8  | **アジャイル・ガバナンス**       | 作って終わりにせず、外部基準・事故・新技術に応じて継続改訂する。               | AI事業者GL第2部E/NIST(4機能)/ISO 23894(8原則)/ISO 42001(PDCA)                                                                                                                 |
 
 > ★ ゼロトラスト前提:**自然言語の入力も、AIの出力も、ともに非信頼として扱う**。入力=社内ユーザも攻撃者になりうる(OWASP ASI/総務省GL想定事例1)。**出力=ハルシネーション・不適切出力の前提で下流に渡す前に検証する**([OWASP LLM05 不適切な出力処理](../../sources/2024-11_owasp_top10-for-llm-applications-2025.md))。性善説で組まない。
 >
@@ -36,12 +36,12 @@ ______________________________________________________________________
 
 ### 2.2 システム(対象となるAI)
 
-| 区分 | 例 | 主な立場 |
-|---|---|---|
-| 社内導入AI基盤 | **Gemini Enterprise**(社内RAG・エージェント) | 利用者+開発者 |
-| 外部SaaS型AI | ChatGPT, Claude, 各種AI機能付きSaaS | 利用者 |
-| 自社開発AIエージェント | Geminiベースの業務エージェント | 開発者 |
-| 外販AI(将来) | 顧客向けに提供するAIソリューション | 提供者 |
+| 区分                   | 例                                           | 主な立場      |
+| ---------------------- | -------------------------------------------- | ------------- |
+| 社内導入AI基盤         | **Gemini Enterprise**(社内RAG・エージェント) | 利用者+開発者 |
+| 外部SaaS型AI           | ChatGPT, Claude, 各種AI機能付きSaaS          | 利用者        |
+| 自社開発AIエージェント | Geminiベースの業務エージェント               | 開発者        |
+| 外販AI(将来)           | 顧客向けに提供するAIソリューション           | 提供者        |
 
 ### 2.3 e-Agencyの3立場(立場で適用条項が変わる)
 
